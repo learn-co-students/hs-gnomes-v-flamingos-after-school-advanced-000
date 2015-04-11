@@ -9,7 +9,7 @@ type: lab
 
 The Garden Gnomes and Lawn Flamingos have a long standing feud. Today they will engage in an epic battle. Run `rspec --fail-fast` to follow along with the specs to create garden gnome and lawn flamingo armies and battle.
 
-**Start out building the Garden Gnome class, but note that you might need to build out parts of the Flamingo class to make the Garden Gnome specs pass.**
+**You will need to build out parts of the Flamingo class before all the Garden Gnome specs will pass.**
 
 
 
