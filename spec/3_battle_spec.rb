@@ -59,8 +59,9 @@ describe "Battle" do
     it "can make the garden gnomes attack if they are all angry" do
       @flamingo.taunt(@gnome1)
       @flamingo.taunt(@gnome2)
+      @battle.gnome_attack
       output = capture_stdout { @battle.gnome_attack }
-      expect(output).to eq("Garden gnomes attack!!!\n")
+      expect(output).to eq("Garden gnomes attack!!!\nGarden gnomes attack!!!\n")
     end
   end
 
@@ -88,8 +89,9 @@ describe "Battle" do
     it "can make the flamingos attack if they are all angry" do
       @gnome.taunt(@flamingo1)
       @gnome.taunt(@flamingo2)
+      @battle.flamingo_attack
       output = capture_stdout { @battle.flamingo_attack }
-      expect(output).to eq("Lawn flamingos attack!!!\n")
+      expect(output).to eq("Flamingos attack!!!\nFlamingos attack!!!\n")
     end
   end
 end

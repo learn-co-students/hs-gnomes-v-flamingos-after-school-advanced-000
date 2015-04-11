@@ -17,8 +17,8 @@ describe "Garden Gnome" do
   end
 
   it "has a weapon attribute" do
-    @test_gnome.weapon = "a big stick"
-    expect(@test_gnome.age).to eq("a big stick")
+    @test_gnome.weapon = "bazooka"
+    expect(@test_gnome.weapon).to eq("bazooka")
   end
 
   it "initializes without anger" do
@@ -31,8 +31,7 @@ describe "Garden Gnome" do
   end
 
   it "gets angry when it is taunted" do
-    output = capture_stdout { @test_flamingo.taunt(@test_gnome) }
-    expect(output).to eq("Now you've done it!\n")
+    @test_flamingo.taunt(@test_gnome)
     expect(@test_gnome.angry).to eq(true)
   end
 

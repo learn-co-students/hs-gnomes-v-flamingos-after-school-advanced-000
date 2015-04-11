@@ -17,8 +17,8 @@ describe "Lawn Flamingo" do
   end
 
   it "has a weapon attribute" do
-    @test_flamingo_2.weapon = "sling shot"
-    expect(@test_flamingo_2.age).to eq("sling shot")
+    @test_flamingo_2.weapon = "cannon"
+    expect(@test_flamingo_2.weapon).to eq("cannon")
   end
 
   it "initializes without anger" do
@@ -27,12 +27,11 @@ describe "Lawn Flamingo" do
 
   it "can taunt the garden gnomes" do
     output = capture_stdout { @test_flamingo_2.taunt(@test_gnome_2) }
-    expect(output).to eq("Your mother was a hamster and father smelled of elderberries!\n")
+    expect(output).to eq("Your mother was a hamster and your father smelled of elderberries!\n")
   end
 
   it "gets angry when it is taunted" do
-    output = capture_stdout { @test_gnome_2.taunt(@test_flamingo_2) }
-    expect(output).to eq("How dare you, sir!\n")
+    @test_gnome_2.taunt(@test_flamingo_2)
     expect(@test_flamingo_2.angry).to eq(true)
   end
 
