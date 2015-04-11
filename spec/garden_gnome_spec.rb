@@ -2,58 +2,42 @@ require_relative './spec_helper'
 
 describe "Garden Gnome" do
 
+  before do
+    @test_gnome = GardenGnome.new
+    @test_flamingo = LawnFlamingo.new
+  end
+
   it "can create individual instances of the garden gnome" do
-    test_gnome = GardenGnome.new
-    expect(test_gnome).to be_an_instance_of(GardenGnome)
+    expect(@test_gnome).to be_an_instance_of(GardenGnome)
   end
 
   it "has a name attribute" do
-    test_gnome1 = GardenGnome.new
-    test_gnome1.name = "Carl the Crappy"
-    expect(test_gnome1.name).to eq("Carl the Crappy")
+    @test_gnome.name = "Boris the Brave"
+    expect(@test_gnome.name).to eq("Boris the Brave")
   end
 
-  it "has an age attribute" do
-    test_gnome2 = GardenGnome.new
-    test_gnome2.age = 3432
-    expect(test_gnome2.age).to eq(3432)
+  it "has a weapon attribute" do
+    @test_gnome.weapon = "a big stick"
+    expect(@test_gnome.age).to eq("a big stick")
   end
 
-  it "has a gluten allergy attribute" do
-    test_gnome3 = GardenGnome.new
-    test_gnome3.gluten_allergy = true
-    expect(test_gnome3.gluten_allergy).to eq(true)
+  it "initializes without anger" do
+    expect(@test_gnome.angry).to eq(false)
   end
 
-  it "initializes with a personality of evil" do
-    test_gnome4 = GardenGnome.new
-    expect(test_gnome4.personality).to eq("evil")
+  it "can taunt the flamingos" do
+    output = capture_stdout { @test_gnome.taunt(@test_flamingo) }
+    expect(output).to eq("I fart in your general direction!\n")
   end
 
-  it "initializes with an argument of hat color" do
-    test_gnome5 = GardenGnome.new("red")
-    expect(test_gnome5.hat_color).to eq("red")
+  it "gets angry when it is taunted" do
+    output = capture_stdout { @test_flamingo.taunt(@test_gnome) }
+    expect(output).to eq("Now you've done it!\n")
+    expect(@test_gnome.angry).to eq(true)
   end
 
-  it "gnaws on trees" do
-    gnawing_gnome = GardenGnome.new
-    output = capture_stdout { gnawing_gnome.gnaw }
-    expect(output).to eq("Gnawing on a tree!!!\n")
+  it "can attack" do
+    output = capture_stdout { @test_gnome.attack }
+    expect(output).to eq("Garden gnomes attack!!!\n")
   end
-
-  it "shouts gnarly" do
-    shouting_gnome = GardenGnome.new
-    output = capture_stdout { shouting_gnome.shout }
-    expect(output).to eq("GNARLY!!!\n")
-  end
-
-  it "introduces itself to humanfolk" do
-    intro_gnome = GardenGnome.new
-    intro_gnome.age = 324
-    intro_gnome.name = "Frankie the Frightening"
-    output = capture_stdout { intro_gnome.introduce_self }
-    expect(output).to eq("Hello humans, my name is Frankie the Frightening, I am 324 years old, and you'll rue the day you crossed me!\n")
-
-  end
-
 end
